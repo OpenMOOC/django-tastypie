@@ -1952,8 +1952,10 @@ class ModelResource(Resource):
 
             related_objs = []
 
+            # https://github.com/toastdriven/django-tastypie/pull/594/files
             for related_bundle in bundle.data[field_name]:
-                related_bundle.obj.save()
+                if related_bundle.obj._state.adding:
+                    related_bundle.obj.save()
                 related_objs.append(related_bundle.obj)
 
             related_mngr.add(*related_objs)

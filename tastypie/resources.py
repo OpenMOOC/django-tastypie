@@ -419,7 +419,11 @@ class Resource(object):
             raise ImmediateHttpResponse(response=http.HttpNotImplemented())
 
         self.is_authenticated(request)
-        self.is_authorized(request)
+
+        if request_type=='detail':
+            self.is_authorized(request, self.obj_get())
+        else:
+            self.is_authorized(request)
         self.throttle_check(request)
 
         # All clear. Process the request.

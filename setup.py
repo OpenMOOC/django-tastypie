@@ -26,11 +26,11 @@ setup(
         'tastypie': ['templates/tastypie/*'],
     },
     requires=[
-        'mimeparse',
+        'python-mimeparse',
         'python_dateutil(>=1.5, < 2.0)',
     ],
     install_requires=[
-        'mimeparse',
+        'python-mimeparse',
         'python_dateutil >= 1.5, < 2.0',
     ],
     classifiers=[
